@@ -13,14 +13,16 @@
 
 <script lang="ts">
   import { defineComponent,ref } from "vue";
-  import FaqList from './components/FaqList.vue'
-  import Faq from "./classes/faq"
-  import SoftwaresId from "./types/Softwares"
+  //import FaqList from './components/FaqList.vue'
+  import FaqList from "@/components/FaqList.vue"
+  import Faq from "@/classes/faq"
+  import SoftwaresId from "@/types/Softwares"
   import axios from 'axios';
   export default defineComponent({
     name:"App",
     components:{FaqList},
     setup(){
+      console.log(process.env.NODE_ENV);      
       let faqs=ref<Faq[]>([])
       let faqsFiltered=ref<Faq[]>([])
       //let faq={ id:4, question:"Pourquoi4?", answer:"Car4"}
@@ -41,18 +43,18 @@
         response.data.data
         //console.log(response.data.data[0].id)
         for (let i = 0; i<response.data.data.length; i++) {
-          console.log(response.data.data[i])
+          //console.log(response.data.data[i])
           const faq={id:4, question:"Pourquoi4?", answer:"Car4", software:1}
           faq.id=response.data.data[i].id
           faq.question=response.data.data[i].question
           faq.answer=response.data.data[i].answer
           faq.software=response.data.data[i].productId
-          console.log(faq)
+          //console.log(faq)
           faqs.value.push(faq)   
           faqsFiltered.value.push(faq)        
         }
         //faqsFiltered=faqs
-        console.log(faqs.value)
+        //console.log(faqs.value)
       }).catch(function (error) {console.error(error);})
       const software= ref<SoftwaresId>(1)
       const handleClick=(term: SoftwaresId)=>{

@@ -13,7 +13,8 @@
 
 <script lang="ts">
     import { defineComponent, PropType } from 'vue';
-    import Faq from '../classes/faq'
+    //import Faq from '../classes/faq'
+    import Faq from '@/classes/faq'
     export default defineComponent({
         props: {
             faqsFiltered:{
